@@ -3,6 +3,9 @@ import React from "react";
 import Pinar from "pinar";
 import { LinearGradient } from "expo-linear-gradient";
 import TabNavigation from "../pages/TabNavigation";
+import { MaterialIcons } from "@expo/vector-icons";
+import Icon from "react-native-vector-icons/FontAwesome";
+import IconMat from "react-native-vector-icons/MaterialIcons";
 import {
   GestureHandlerRootView,
   ScrollView,
@@ -13,6 +16,30 @@ const Slider = () => {
     <GestureHandlerRootView>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View style={styles.carouselContainer}>
+          <View style={styles.pulseTxt}>
+            <Text style={styles.textColor}>
+              <Text style={{ fontWeight: "bold" }}>07025736899</Text> | ameh
+            </Text>
+
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                marginBottom: 10,
+              }}
+            >
+              <Text style={{ color: "#FDCB04" }}>Pulse</Text>
+              <IconMat
+                style={{
+                  top: 2,
+                  right: 5,
+                }}
+                name="keyboard-arrow-right"
+                size={25}
+                color="#FDCB04"
+              />
+            </View>
+          </View>
           <Pinar
             style={styles.carousel}
             showsControls={false}
@@ -54,6 +81,46 @@ const Slider = () => {
         </View>
 
         <TabNavigation />
+        <View style={styles.carouselContainer2}>
+          <Pinar
+            style={styles.carousel}
+            showsControls={false}
+            showsDots
+            dotStyle={styles.dotStyle}
+            activeDotStyle={styles.activeDotStyle}
+          >
+            <LinearGradient
+              colors={["#BABABA", "#DBDBDB", "#979797"]}
+              start={{ x: 1, y: 1 }}
+              end={{ x: 0, y: 1 }}
+              style={styles.slide}
+            >
+              <View style={styles.viewContainer}>
+                <View style={{ paddingBottom: 10 }}>
+                  <Text style={styles.text}>Airtime Balance</Text>
+                  <Text style={styles.text}>#60.8</Text>
+                  <TouchableOpacity style={styles.button}>
+                    <Text style={styles.buttonTxt}>Buy Bundle</Text>
+                  </TouchableOpacity>
+                </View>
+                <View>
+                  <Text style={styles.text}>Data Balance</Text>
+                  <Text style={styles.text}>#60.8</Text>
+                  <TouchableOpacity style={styles.button}>
+                    <Text style={styles.buttonTxt}>Recharge</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+              <View style={styles.viewText}>
+                <Text style={{ fontWeight: "bold" }}>View Details</Text>
+              </View>
+            </LinearGradient>
+
+            <View style={styles.slide2}>
+              <Text style={styles.text}>Slide 2</Text>
+            </View>
+          </Pinar>
+        </View>
       </ScrollView>
     </GestureHandlerRootView>
   );
@@ -66,13 +133,26 @@ const styles = StyleSheet.create({
     height: 500,
     marginBottom: 50,
   },
+  pulseTxt: {
+    flexDirection: "row",
+    marginBottom: 10,
+    justifyContent: "space-between",
+  },
+  textColor: { color: "white", marginBottom: 10 },
   carouselContainer: {
+    flex: 1,
+    borderRadius: 10,
+    alignSelf: "center",
+    maxHeight: 270,
+  },
+  carouselContainer2: {
     flex: 1,
     borderRadius: 10,
     alignSelf: "center",
     justifyContent: "center",
     alignItems: "center",
     maxHeight: 230,
+    marginTop: 20,
   },
   carousel: {
     width: "100%",

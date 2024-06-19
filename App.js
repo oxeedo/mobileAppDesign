@@ -61,7 +61,7 @@ export default function App() {
         style={styles.bottomBar}
         height={400}
         circleWidth={100}
-        bgColor="#181818"
+        bgColor="#333738"
         initialRouteName="Home"
         borderTopLeftRight
         renderCircle={({ selectedTab, navigate }) => (
@@ -126,6 +126,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#FDCB04",
     bottom: 30,
+    marginLeft: 10,
+    marginRight: 10,
   },
 
   tabbarItem: {

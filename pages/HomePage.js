@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, ImageBackground } from "react-native";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import notify from "../assets/icons/notifn.png";
+import { LinearGradient } from "expo-linear-gradient";
 import { MaterialIcons } from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/FontAwesome";
 import IconMat from "react-native-vector-icons/MaterialIcons";
@@ -12,69 +13,57 @@ const HomePage = () => {
   return (
     <View style={styles.container}>
       <StatusBar style="dark" backgroundColor="#fff" />
+
       <View style={styles.upperBg}>
-        <View style={styles.header}>
-          <View style={styles.iconBg}>
-            <MaterialIcons name="person" size={30} color="black" />
-          </View>
-          <View style={styles.yello}>
-            <Text style={styles.textColor}>
-              <Text style={{ fontWeight: "bold" }}>yellow,</Text> ameh
-            </Text>
-            <Text style={styles.textColor}>07025736899</Text>
-            <View style={styles.prestige}>
-              <Icon
-                style={styles.prestigeIcon}
-                name="thumbs-up"
-                size={15}
-                color="black"
-              />
-              <Text style={styles.prestigeTxt}>Explore prestige</Text>
-              <IconMat
-                style={styles.prestigeIcon}
-                name="keyboard-arrow-right"
-                size={20}
-                color="black"
-              />
+        <ImageBackground
+          source={require("../assets/bg2.jpg")}
+          style={styles.background}
+        >
+          <View style={styles.header}>
+            <View style={styles.iconBg}>
+              <MaterialIcons name="person" size={30} color="black" />
+            </View>
+            <View style={styles.yello}>
+              <Text style={styles.textColor}>
+                <Text style={{ fontWeight: "bold" }}>yellow,</Text> ameh
+              </Text>
+              <Text style={styles.textColor}>07025736899</Text>
+              <LinearGradient
+                colors={["white", "white", "white"]}
+                start={{ x: 1, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={styles.gradient}
+              >
+                <View style={styles.prestige}>
+                  <Icon
+                    style={styles.prestigeIcon}
+                    name="thumbs-up"
+                    size={15}
+                    color="black"
+                  />
+                  <Text style={styles.prestigeTxt}>Explore prestige</Text>
+                  <IconMat
+                    style={styles.prestigeIcon}
+                    name="keyboard-arrow-right"
+                    size={20}
+                    color="black"
+                  />
+                </View>
+              </LinearGradient>
+            </View>
+            <View style={styles.notifnBell}>
+              <ImageBackground style={styles.notBg} source={notify}>
+                <Text style={styles.notifnText}>35</Text>
+              </ImageBackground>
             </View>
           </View>
-          <View style={styles.notifnBell}>
-            <ImageBackground style={styles.notBg} source={notify}>
-              <Text style={styles.notifnText}>35</Text>
-            </ImageBackground>
-          </View>
-        </View>
+        </ImageBackground>
+      </View>
+      <View style={styles.sliderView}>
+        <Slider />
       </View>
       <View style={styles.lowerBg}>
-        <View style={styles.innerBg}>
-          <View style={styles.pulseTxt}>
-            <Text style={styles.textColor}>
-              <Text style={{ fontWeight: "bold" }}>07025736899</Text> | ameh
-            </Text>
-
-            <View
-              style={{
-                flexDirection: "row",
-                alignItems: "center",
-                marginBottom: 10,
-              }}
-            >
-              <Text style={{ color: "#FDCB04" }}>Pulse</Text>
-              <IconMat
-                style={{
-                  top: 2,
-                  right: 5,
-                }}
-                name="keyboard-arrow-right"
-                size={25}
-                color="#FDCB04"
-              />
-            </View>
-          </View>
-          <View style={styles.slider}>
-            <Slider />
-          </View>
-        </View>
+        <View style={styles.innerBg}></View>
       </View>
     </View>
   );
@@ -88,23 +77,25 @@ const styles = StyleSheet.create({
     backgroundColor: "#000",
   },
   upperBg: {
-    height: "35%",
-    backgroundColor: "#2F2D1F",
+    flex: 1,
+  },
+  sliderView: {
+    position: "absolute",
+    top: 170,
+    left: 10,
+    right: 10,
+    bottom: 0,
+    zIndex: 1, // Ensure this view is on top
+    height: 550,
   },
   lowerBg: {
-    height: "65%",
-    backgroundColor: "#000",
+    flex: 1,
   },
-  innerBg: {
-    backgroundColor: "#000",
-    height: "100%",
+  background: {
     width: "100%",
-    alignSelf: "center",
-    marginTop: -40,
-    borderRadius: 10,
-    padding: 5,
-    paddingTop: 20,
+    height: "75%",
   },
+
   notBg: {
     height: 50,
     width: 50,
@@ -119,20 +110,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   header: {
-    marginTop: 70,
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 5,
     marginLeft: 10,
+    marginBottom: 50,
+    marginTop: 50,
   },
   yello: {
     justifyContent: "space-between",
-    marginRight: 90,
+    marginRight: 50,
   },
   textColor: { color: "white", marginBottom: 10 },
+  gradient: {
+    width: "90%",
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   prestige: {
     height: 30,
-    width: 150,
+    width: 180,
     backgroundColor: "#C5C5C6",
     borderRadius: 20,
     flexDirection: "row",
@@ -146,16 +144,9 @@ const styles = StyleSheet.create({
 
   prestigeIcon: {
     marginRight: 5,
+    padding: 5,
   },
 
-  pulseTxt: {
-    justifyContent: "space-between",
-    flexDirection: "row",
-    marginBottom: 10,
-    marginLeft: 10,
-
-    alignItems: "center",
-  },
   notifnBell: {
     flexDirection: "row",
   },
@@ -171,26 +162,5 @@ const styles = StyleSheet.create({
     borderRadius: 7.5,
     fontSize: 10,
     fontWeight: "bold",
-  },
-  carousel: {
-    width: "100%",
-    height: 300,
-  },
-  slide: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  text: {
-    color: "#fff",
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  slider: {
-    flex: 1,
-    width: "100%",
-    padding: 10,
-    backgroundColor: "#000",
-    borderRadius: 10,
   },
 });

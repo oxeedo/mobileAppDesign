@@ -31,7 +31,7 @@ const TabNavigation = () => {
           width: "100%",
         },
         tabBarStyle: {
-          backgroundColor: "#616363", // Replace with your desired color
+          backgroundColor: "#333738", // Replace with your desired color
         },
       }}
     >
@@ -48,7 +48,7 @@ export default TabNavigation;
 
 const styles = StyleSheet.create({
   container: {
-    height: 450,
+    height: 400,
     borderRadius: 20,
   },
 });
