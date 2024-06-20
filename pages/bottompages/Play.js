@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View, ImageBackground } from "react-native";
+import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
+import bolt from "../../assets/Bolt.png";
 
 const Play = () => {
   return (
@@ -8,6 +9,7 @@ const Play = () => {
       <View style={styles.gridContainer}>
         <View style={styles.jumia}>
           <Text>Jumia</Text>
+          <Image style={styles.boltImg} source={bolt} />
         </View>
       </View>
     </View>
@@ -31,5 +33,10 @@ const styles = StyleSheet.create({
   },
   jumia: {
     width: "30",
+  },
+  boltImg: {
+    width: 20,
+    height: 20,
+    objectFit: "contain",
   },
 });

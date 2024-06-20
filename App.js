@@ -4,6 +4,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   View,
+  Image,
 } from "react-native";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -15,27 +16,47 @@ import HomePage from "./pages/HomePage";
 import Play from "./pages/bottompages/Play";
 import Help from "./pages/bottompages/Help";
 import More from "./pages/bottompages/More";
+import play from "./assets/play.png";
+import more from "./assets/more.png";
+import help from "./assets/help.png";
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
   const _renderIcon = (routeName, selectedTab) => {
     let icon = "";
+    let isAssetIcon = false; // Flag to determine if the icon is an asset
 
     switch (routeName) {
       case "Home":
         icon = "home"; // Use the appropriate icon name for home
         break;
       case "Play":
-        icon = "play-circle"; // Use the appropriate icon name for play
+        icon = play; // Use the asset icon for play
+        isAssetIcon = true;
         break;
       case "Help":
-        icon = "help-circle"; // Use the appropriate icon name for help
+        icon = help; // Use the asset icon for play
+        isAssetIcon = true;
         break;
       case "More":
-        icon = "ellipsis-horizontal"; // Use the appropriate icon name for more
+        icon = more; // Use the asset icon for play
+        isAssetIcon = true;
         break;
     }
+    if (isAssetIcon) {
+      return (
+        <Image
+          source={icon}
+          style={{
+            width: 30,
+            height: 30,
+            tintColor: routeName === selectedTab ? "#FDCB04" : "gray",
+          }}
+        />
+      );
+    }
+
     return (
       <Ionicons
         name={icon}

@@ -29,6 +29,7 @@ const TabNavigation = () => {
           flex: 1,
           justifyContent: "center",
           width: "100%",
+          fontWeight: 500,
         },
         tabBarStyle: {
           backgroundColor: "#333738", // Replace with your desired color
