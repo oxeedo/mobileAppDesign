@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ImageBackground } from "react-native";
+import { StyleSheet, Text, View, ImageBackground, Image } from "react-native";
 
 import { StatusBar } from "expo-status-bar";
 import React from "react";
@@ -8,6 +8,7 @@ import { MaterialIcons } from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/FontAwesome";
 import IconMat from "react-native-vector-icons/MaterialIcons";
 import Slider from "../component/Slider";
+import help_icon from "../assets/help_icon.png";
 
 const HomePage = () => {
   return (
@@ -63,7 +64,9 @@ const HomePage = () => {
         <Slider />
       </View>
       <View style={styles.lowerBg}>
-        <View style={styles.innerBg}></View>
+        <View style={styles.updates}>
+          <Image style={styles.helpImg} source={help_icon} />
+        </View>
       </View>
     </View>
   );
@@ -90,6 +93,26 @@ const styles = StyleSheet.create({
   },
   lowerBg: {
     flex: 1,
+  },
+  helpImg: {
+    height: 50,
+    width: 50,
+    objectFit: "contain",
+  },
+  updates: {
+    marginTop: 150,
+    zIndex: 1, // Ensure this view is on top
+    height: 70,
+    width: 70,
+    justifyContent: "center", // Center vertically
+    alignItems: "center", // Align to the right
+    backgroundColor: "transparent", // Make background transparent
+    position: "absolute", // Absolute positioning
+    right: 20, // Align to the right
+    bottom: 100, // Position from the bottom
+    borderColor: "#fff", // Yellow border color
+    borderWidth: 2, // Width of the border
+    borderRadius: 50,
   },
   background: {
     width: "100%",
